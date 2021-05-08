@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "51ccf8e2-ca68-4db2-8cad-d84d5bc15955",
+		"name": "BITBandomojiUzduotis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Return all",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code ist 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has OK\", function (){\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"JSON has more than 2 objects\", function () {\r",
+							"    pm.expect(jsonData.length).to.least(2);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    pm.expect(jsonData[0].title).to.eql(\"delectus aut autem\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/todos/",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"todos",
+						""
+					]
+				},
+				"description": "All darbuotojai"
+			},
+			"response": []
+		},
+		{
+			"name": "Return by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code ist 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name is OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate object title value\", function () {\r",
+							"    pm.expect(pm.response.json().title).to.eql(\"delectus aut autem\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate id value\", function () {\r",
+							"    pm.expect(pm.response.json().id).to.eq(1);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validate object title exist\", function () {\r",
+							"    pm.expect(pm.response.json().title).to.exist;\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check userID\", function () {\r",
+							"    pm.expect(jsonData.userId).to.eql(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check title\", function () {\r",
+							"    pm.expect(jsonData.title).to.eql(\"delectus aut autem\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check completed\", function () {\r",
+							"    pm.expect(jsonData.completed).to.eql(false);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/todos/1",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"todos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By id -1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response is empty object\", function () {",
+							"    pm.response.to.have.body(\"{}\");",
+							"});",
+							"",
+							"pm.test(\"Status code name hast Not Found\", function () {",
+							"    pm.response.to.have.status(\"Not Found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/todos/-1",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"todos",
+						"-1"
+					]
+				},
+				"description": "Get By id -1"
+			},
+			"response": []
+		}
+	]
+}
